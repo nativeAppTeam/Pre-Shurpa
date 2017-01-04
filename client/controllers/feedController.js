@@ -3,5 +3,13 @@ angular
   .controller('feedController', feedController);
 
 function feedController($scope, ItinFactory, $animate) {
+$scope.currentItin = [1,2,3,4];
+$scope.nums = [1,2,3];
+$scope.title = 'Marina Del Ray';
+$scope.zip = 90508;
+$scope.author = "Chris Fleming";
+$scope.name = "Whole Foods";
+$scope.location = "Jefferson BLVD";
+$scope.description = "Whole foods is a wonderful market here in town."
 
 }
