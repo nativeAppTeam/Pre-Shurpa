@@ -1,0 +1,22 @@
+html, body {
+  background-color: rgb(204, 204, 204);
+}
+
+a {
+  color: black;
+}
+
+#title {
+  font-family: monospace;
+  font-size: 30px;
+}
+
+#menu {
+
+  height: 50px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+  display: inline-block;
+}

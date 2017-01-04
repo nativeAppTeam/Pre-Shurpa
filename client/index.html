@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <script type="text/javascript" src="angular/angular.min.js"></script>
+  <script type="text/javascript" src="angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="./controllers/homeController.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+  <script type="text/javascript" src="./controllers/feedController.js"></script>
+  <script type="text/javascript" src="./controllers/createController.js"></script>
+  <script type="text/javascript" src="./factories/itinFactory.js"></script>
+
+
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+  <link rel="stylesheet" href="style.css">
+
+    <div id="menu">
+
+      <a ng-href="/#/home">Page 1</a>
+      <a ng-href="/#/createItin">Page 2</a>
+      <a ng-href="/#/team">Page 3</a>
+
+
+
+      <!-- <div id="logo">LOGO</div> -->
+
+
+
+
+    </div>
+
+</head>
+<body ng-app='myApp'>
+  <div class="container" ng-view></div>
+
+
+
+
+
+</body>
+</html>
