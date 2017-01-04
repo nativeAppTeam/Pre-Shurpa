@@ -3,5 +3,5 @@ angular
   .factory('ItinFactory', ItinFactory);
 
   function ItinFactory () {
-    return {};
-  }
+    return {}
+}
