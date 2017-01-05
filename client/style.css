@@ -17,6 +17,16 @@ a {
   display: inline-block;
 }
 
+
+/*STYLES FOR HOME */
+  #homeContainer {
+    text-align: center;
+    margin: auto;
+    background-color: yellow;
+  }
+    
+  /*END OF STYLES FOR HOME*/
+
 .feed {
   height: 800px;
   width: 95%;
@@ -47,3 +57,4 @@ p {
   overflow: scroll;
   position: relative;
 }
+
