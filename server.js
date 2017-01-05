@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
 
 mongoose.connect('mongodb://nmarentes:beekeepers17@ds049211.mlab.com:49211/nativeapp')
 //csassessment:codesmith@localhost:5432/tester'
@@ -48,32 +48,39 @@ let Itinerary = mongoose.model('Itinerary', itinerarySchema);
 // })
 
 app.post('/create', function(req, res) {
-    itinerary.create({
-        author: req.author,
-        location: req.location,
-        description: req.description,
-        stop1placeName: req.stop1placeName,
-        stop1location: req.stop1location,
-        stop1description: req.stop1description,
-        stop2placeName: req.stop2placeName,
-        stop2location: req.stop2location,
-        stop2description: req.stop2description,
-        stop3placeName: req.stop3placeName,
-        stop3location: req.stop3location,
-        stop3description: req.stop3description,
-        stop4placeName: req.stop3placeName,
-        stop4location: req.stop3location,
-        stop4description: req.stop3description
+    res.send(req.body);
+    console.log(req.body);
+    let newItin = new Itinerary({
+        author: req.body.author,
+        authorLocation: req.body.authorLocation,
+        description: req.body.description,
+        stop1placeName: req.body.stop1placeName,
+        stop1location: req.body.stop1location,
+        stop1description: req.body.stop1description,
+        stop2placeName: req.body.stop2placeName,
+        stop2location: req.body.stop2location,
+        stop2description: req.body.stop2description,
+        stop3placeName: req.body.stop3placeName,
+        stop3location: req.body.stop3location,
+        stop3description: req.body.stop3description,
+        stop4placeName: req.body.stop4placeName,
+        stop4location: req.body.stop4location,
+        stop4description: req.body.stop4description
+    })
+    newItin.save(function(err, exampleItin){
+      if(err) return console.error(err)
     })
 })
 
 
-app.get('/', function(req, res) {
-    res.status(200).type('html')
-    res.sendFile(path.join(__dirname, './index.html'))
+app.get('/itins', function(req, res) {
+  Itinerary.find({}, function(err, itins){ console.log(itins); res.send(itins)});
 })
 
-
+//BELOW UNDER CONSTRUCTION 
+app.get('/itins/:cord', function(req, res) {
+  Itinerary.find({}, function(err, itins){ console.log(itins); res.send(itins)});
+})
 
 
 app.listen(3000, () => {

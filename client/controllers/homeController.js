@@ -3,13 +3,23 @@ angular
   .controller('HomeController', HomeController);
 
 function HomeController($scope, ItinFactory, $http) {
-  // $scope.currLocation = "Not Yet Defined"
-  $scope.searchLocation = function(x) { 
-          $http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+x+'&key=AIzaSyDRjb5435OyNsX2BO4QM7vR-84vvUuzTBM')
-          .success(function(data) {
-            console.log(data);
-          });
+
+  $scope.searchLocation = function(location) {
+    // Querying Geocode API to convert location (address formatted) into Lat and Long
+    $http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key=AIzaSyDRjb5435OyNsX2BO4QM7vR-84vvUuzTBM')
+      .success(function(data) {
+        console.log(data);
+      });
+      
+    // Querying for ALL itins upon search click
+    $http.get('/itins').then(function(data){$scope.itinLibrary = data}) 
+
+    // Playing with Maps Geomety
+    // var _kCord = new google.maps.LatLng(-36.874694, 174.735292);
+    // var _pCord = new google.maps.LatLng(-36.858317, 174.782284);
+    // console.log(google.maps.geometry.spherical.computeDistanceBetween(_pCord, _kCord));
   };
+  
   $scope.getLocation = function(){
    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
