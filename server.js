@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, './client/')));
 
 
 
-mongoose.connect('mongodb://localhost/etc')
+mongoose.connect('mongodb://localhost/nativeapp')
 //csassessment:codesmith@localhost:5432/tester'
 
 let db = mongoose.connection.once('open', () => {
