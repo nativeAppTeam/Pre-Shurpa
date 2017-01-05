@@ -53,6 +53,15 @@ a {
   display: inline-block;
 }
 
+.itinCreator{
+  display:inline-flex;
+}
+
+.description{
+  height:100px;
+  width: 200px;
+}
+
 p {
   overflow: scroll;
   position: relative;

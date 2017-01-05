@@ -15,9 +15,11 @@
   <fieldset data-ng-repeat="spot in spots">
     <input type="text" id="{{spot}}" ng-model="placeName" type="text" placeholder="Place Name">
     <input type="text" id="{{spot}}" ng-model="location" type="text" placeholder="Location">
-    <input type="text" id="{{spot}}" ng-model="description" type="text" placeholder="Description">
+    <textarea rows ="3" cols="2" type="text" class="description" id="{{spot}}" ng-model="description" type="text" placeholder="Description"></textarea>
     <button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>
   </fieldset>
-  <button class="addSpot" ng-submit="save()" ng-click="addNewSpot()">add a spot</button>
-
+  <button class="addSpot"  ng-click="addNewSpot()">add a spot</button>
+</div>
+<div>
+  <button ng-submit="save()">save your Itinerary</button>
 </div>

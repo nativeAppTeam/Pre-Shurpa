@@ -15,10 +15,10 @@ function createController($scope, $location, ItinFactory) {
   }
 
   $scope.setAuthorAndLocation= function(){
-    // itinAuthor
-    // authorLocation
-    // placeName
-    // location
-    // description
+   // ItinFactory.post($scope.itinAuthor, $scope.authorLocation)
   }
+$scope.save= function(){
+  //  ItinFactory.post($scope.placeName, $scope.location, $scope.description)
+}
+
 }
