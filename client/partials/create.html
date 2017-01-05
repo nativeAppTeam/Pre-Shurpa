@@ -1,1 +1,23 @@
 <h3>PAGE 2</h3>
+<h1>Create Itinerary</h1>
+
+<form ng-submit="setAuthorAndLocation()">
+  <input type="text" ng-model="itinAuthor" placeholder="Your Name Here">
+  <h2>Where are we starting?</h2>
+  <input type="text" ng-model="authorLocation" placeholder="Ex: 1234 Main St.">
+  <button type="submit">Submit</button>
+</form>
+</br>
+
+
+
+<div class="itinCreator">
+  <fieldset data-ng-repeat="spot in spots">
+    <input type="text" id="{{spot}}" ng-model="placeName" type="text" placeholder="Place Name">
+    <input type="text" id="{{spot}}" ng-model="location" type="text" placeholder="Location">
+    <input type="text" id="{{spot}}" ng-model="description" type="text" placeholder="Description">
+    <button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>
+  </fieldset>
+  <button class="addSpot" ng-submit="save()" ng-click="addNewSpot()">add a spot</button>
+
+</div>

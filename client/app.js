@@ -11,7 +11,7 @@ function configFunction($routeProvider, $locationProvider) {
       templateUrl: './partials/home.html',
       controller: 'HomeController',
     })
-      .when('/team', {
+      .when('/feed', {
       templateUrl: './partials/feed.html',
       controller: 'feedController',
     })

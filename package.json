@@ -16,6 +16,7 @@
     "ecstatic": "^0.8.0",
     "express": "^4.14.0",
     "ngmap": "^1.17.8",
+    "mongoose": "^4.7.6",
     "nodemon": "^1.9.2",
     "pg": "^6.1.2",
     "sequelize": "^3.27.0"

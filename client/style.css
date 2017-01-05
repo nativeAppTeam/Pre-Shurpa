@@ -6,10 +6,6 @@ a {
   color: black;
 }
 
-#title {
-  font-family: monospace;
-  font-size: 30px;
-}
 
 #menu {
 
@@ -21,6 +17,7 @@ a {
   display: inline-block;
 }
 
+
 /*STYLES FOR HOME */
   #homeContainer {
     text-align: center;
@@ -29,3 +26,35 @@ a {
   }
     
   /*END OF STYLES FOR HOME*/
+
+.feed {
+  height: 800px;
+  width: 95%;
+  margin: 0 auto;
+  list-style-type: none;
+  overflow: scroll;
+  position: relative;
+}
+
+.feed-item {
+  height: 300px;
+  width: 95%;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.stops {
+
+  margin-left: 2px;
+  margin-bottom: 4px;
+  height: 125px;
+  width: 125px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+p {
+  overflow: scroll;
+  position: relative;
+}
+
