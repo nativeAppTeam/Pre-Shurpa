@@ -4,7 +4,7 @@
 
 <h2>Show me what the locals recommend</h2>
 
-<input places-auto-complete types="['geocode']" ng-model="location" id="homeSearch" on-place-changed="myUnusedCallback(location)"/>
+<input places-auto-complete placeIDOnly="true" ng-model="location" id="homeSearch" on-place-changed="myUnusedCallback(location)"/>
 </br>
 </br>
 <button ng-click="getLocation()"> Use Current Location </button>
