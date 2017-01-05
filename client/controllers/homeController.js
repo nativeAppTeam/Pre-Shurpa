@@ -10,16 +10,18 @@ function HomeController($scope, ItinFactory, $http) {
       .success(function(data) {
         console.log(data);
       });
-      
-    // Querying for ALL itins upon search click
-    $http.get('/itins').then(function(data){$scope.itinLibrary = data}) 
 
+    // Querying for ALL itins upon search click
+    $http.get('/itins').then(function(data){
+      ItinFactory.currentItins = data.data;
+      console.log('data from get request', data);
+    })
     // Playing with Maps Geomety
     // var _kCord = new google.maps.LatLng(-36.874694, 174.735292);
     // var _pCord = new google.maps.LatLng(-36.858317, 174.782284);
     // console.log(google.maps.geometry.spherical.computeDistanceBetween(_pCord, _kCord));
   };
-  
+
   $scope.getLocation = function(){
    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -27,8 +29,8 @@ function HomeController($scope, ItinFactory, $http) {
          $scope.location = data.results[0].formatted_address;
          console.log(data.results[0])
       });
-        
-        // console.log(addressObj)        
+
+        // console.log(addressObj)
          $scope.location = position.coords.latitude + ", " + position.coords.longitude;
         //  console.log($scope.location)
       });
@@ -36,4 +38,3 @@ function HomeController($scope, ItinFactory, $http) {
    console.log("Running get Location")
   };
 }
-
