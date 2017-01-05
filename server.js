@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser = require('bod')
+const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
@@ -43,9 +43,9 @@ let Itinerary = mongoose.model('Itinerary', itinerarySchema);
 //     stop2placeName: 'whole foods',
 //      })
 
-exampleItin.save(function(err, exampleItin){
-  if(err) return console.error(err)
-})
+// exampleItin.save(function(err, exampleItin){
+//   if(err) return console.error(err)
+// })
 
 app.post('/create', function(req, res) {
     itinerary.create({
