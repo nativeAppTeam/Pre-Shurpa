@@ -20,3 +20,12 @@ a {
   display: flex;
   display: inline-block;
 }
+
+/*STYLES FOR HOME */
+  #homeContainer {
+    text-align: center;
+    margin: auto;
+    background-color: yellow;
+  }
+    
+  /*END OF STYLES FOR HOME*/
