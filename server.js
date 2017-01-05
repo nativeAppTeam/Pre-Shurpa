@@ -1,20 +1,66 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
 
 app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+
+
+mongoose.connect('mongodb://localhost/etc')
+//csassessment:codesmith@localhost:5432/tester'
+
+let db = mongoose.connection.once('open', () => {
+  console.log('Connected with MongoDB ORM - mongodb-orm');
 });
+
+db.on('error', console.error.bind(console, 'connection error: '));
+
+let itinerarySchema = new mongoose.Schema({
+  author: String,
+  authorLocation: String,
+  stop1placeName:String,
+  stop1location: String,
+  stop1description: String,
+  stop2placeName:String,
+  stop2location: String,
+  stop2description: String,
+  stop3placeName:String,
+  stop3location: String,
+  stop3description: String
+  })
+
+let itinerary = mongoose.model('itinerary', itinerarySchema);
+
+
+// app.post('/create', function (req, res) {
+//   itinerary.create({
+//     author: req.author,
+//     location: req.location,
+//     description: req.description
+//   })
+// })
+
+
+app.get('/', function(req,res){
+  res.status(200).type('html')
+  res.sendFile(path.join(__dirname,'./index.html'))
+})
+
+
+
+
+  app.listen(3000, () => {
+    console.log('Listening on port 3000');
+  });
 
 
 
 //mongoose
-// const mongoose = require('mongoose');
+// 
 
-// const itinDB='mongodb://nmarentes:beekeepers17@ds049211.mlab.com:49211/nativeapp'
+// 
 
 // mongoose.connect(itinDB);
 
