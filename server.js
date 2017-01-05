@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-
+const bodyParser = require('body-parser')
 
 app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
@@ -84,9 +83,9 @@ app.listen(3000, () => {
 
 
 //mongoose
-//
+// 
 
-//
+// 
 
 // mongoose.connect(itinDB);
 
@@ -104,3 +103,4 @@ app.listen(3000, () => {
 //   res.status(200).type('html')
 //   res.sendFile(path.join(__dirname,'./index.html'))
 // })
+
