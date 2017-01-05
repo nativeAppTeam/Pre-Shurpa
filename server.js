@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+
 app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
 
