@@ -43,8 +43,8 @@ function createController($scope, $location, ItinFactory, $http) {
       $scope.stop4placeName,
       $scope.stop4location,
       $scope.stop4description
-    ).success(function(){
-      alert('Itinerary Created!!!')
+    ).success(function() {
+       alert('Itinerary Created!!!')
     })
   }
 
@@ -67,7 +67,12 @@ function createController($scope, $location, ItinFactory, $http) {
           $scope.authorZip= data.results[0].formatted_address.slice(-10).slice(0,5);
           console.log($scope.authorZip)
         });
+<<<<<<< HEAD
         // console.log(addressObj)        
+=======
+
+        // console.log(addressObj)
+>>>>>>> 1e56908c22ba0826aa0e532da7a6bcdab0a07a62
         $scope.location = position.coords.latitude + ", " + position.coords.longitude;
         //  console.log($scope.location)
       });
