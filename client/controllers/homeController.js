@@ -3,20 +3,26 @@ angular
   .controller('HomeController', HomeController);
 
 function HomeController($scope, ItinFactory, $http) {
-  
+
   //initializing pull of last three submitted
  $http.get('/itins').then(function(data){
-      $scope.itinLibrary = data.data.slice(-3); 
+      $scope.itinLibrary = data.data.slice(-3);
       console.log('itinLibrary', ($scope.itinLibrary));
-  }); 
+  });
 
   $scope.searchLocation = function(location) {
+
+    if(!location) {
+      alert('NO SEARCH QUERY');
+      window.location = '/#/';
+      return;
+    }
     // Querying Geocode API to convert location (address formatted) into Lat and Long
     $http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key=AIzaSyDRjb5435OyNsX2BO4QM7vR-84vvUuzTBM')
       .success(function(data) {
         console.log("Full Search Location Object", data);
-        $scope.searchZip = data.results[0].address_components[7].short_name;
-        console.log($scope.searchZip);
+        ItinFactory.searchZip = data.results[0].formatted_address.slice(-10).slice(0,5);
+        console.log('itin Factory zip', ItinFactory.searchZip);
       });
 
     // Querying for ALL itins upon search click
@@ -24,16 +30,14 @@ function HomeController($scope, ItinFactory, $http) {
       $scope.itinLibrary = data.data;
       ItinFactory.currentItins = data.data;
       console.log('itinLibrary', ($scope.itinLibrary));
-      // $location.path("/#/feed");
-      window.location = "/#/feed";
+      window.location = '/#/feed';
+    });
 
-    }); 
-    
 
 
 //     // OLD Querying for ALL itins upon search click
 //     $http.get('/itins').then(function(data){
-      
+
 //       console.log('data from get request', data);
 //     })
 

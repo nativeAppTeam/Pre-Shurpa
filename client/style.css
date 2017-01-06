@@ -1,18 +1,22 @@
 html, body {
-  background-color: rgb(204, 204, 204);
+  background-color: rgb(38, 61, 96);
+  color: white;
 }
 
 a {
-  color: black;
+  color: white;
 }
 
+.title1 {
+  font-family: fantasy;
+}
 
 #menu {
 
   height: 50px;
   width: 100%;
   margin: 0 auto;
-  background-color: white;
+  background-color: rgb(38, 61, 96);
   display: flex;
   display: inline-block;
 }
@@ -22,7 +26,7 @@ a {
   #homeContainer {
     text-align: center;
     margin: auto;
-    background-color: yellow;
+    background-color: rgb(38, 61, 96);
   }
 
   /*END OF STYLES FOR HOME*/
@@ -65,4 +69,11 @@ a {
 
 p {
   position: relative;
+  margin-top: 0;
+}
+
+button {
+  background: none;
+  border: 1px solid white;
+  color: white;
 }
