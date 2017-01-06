@@ -3,23 +3,35 @@ angular
   .controller('HomeController', HomeController);
 
 function HomeController($scope, ItinFactory, $http) {
+  
+  //initializing pull of last three submitted
+ $http.get('/itins').then(function(data){
+      $scope.itinLibrary = data.data.slice(-3); 
+      console.log('itinLibrary', ($scope.itinLibrary));
+  }); 
 
   $scope.searchLocation = function(location) {
     // Querying Geocode API to convert location (address formatted) into Lat and Long
     $http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+location+'&key=AIzaSyDRjb5435OyNsX2BO4QM7vR-84vvUuzTBM')
       .success(function(data) {
-        console.log(data);
+        console.log("Full Search Location Object", data);
+        $scope.searchZip = data.results[0].address_components[7].short_name;
+        console.log($scope.searchZip);
       });
-      
     // Querying for ALL itins upon search click
-    $http.get('/itins').then(function(data){$scope.itinLibrary = data}) 
+    $http.get('/itins').then(function(data){
+      $scope.itinLibrary = data.data; 
+      console.log('itinLibrary', ($scope.itinLibrary));
+      // $location.path("/#/feed");
+      window.location = "/#/feed";
 
+    }); 
+    
     // Playing with Maps Geomety
     // var _kCord = new google.maps.LatLng(-36.874694, 174.735292);
     // var _pCord = new google.maps.LatLng(-36.858317, 174.782284);
     // console.log(google.maps.geometry.spherical.computeDistanceBetween(_pCord, _kCord));
   };
-  
   $scope.getLocation = function(){
    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
