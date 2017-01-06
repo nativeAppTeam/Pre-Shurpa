@@ -8,6 +8,7 @@ app.use(express.static(path.join(__dirname, './node_modules/')));
 app.use(express.static(path.join(__dirname, './client/')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 mongoose.connect('mongodb://nmarentes:beekeepers17@ds049211.mlab.com:49211/nativeapp')
 //csassessment:codesmith@localhost:5432/tester'
@@ -53,30 +54,34 @@ let Itinerary = mongoose.model('Itinerary', itinerarySchema);
 // })
 
 app.post('/create', function(req, res) {
-    res.send(req.body);
     console.log(req.body);
-    let newItin = new Itinerary({
-        title: req.body.title,
-        author: req.body.author,
-        authorLocation: req.body.authorLocation,
-        authorZip: req.body.authorZip,
-        description: req.body.description,
-        stop1placeName: req.body.stop1placeName,
-        stop1location: req.body.stop1location,
-        stop1description: req.body.stop1description,
-        stop2placeName: req.body.stop2placeName,
-        stop2location: req.body.stop2location,
-        stop2description: req.body.stop2description,
-        stop3placeName: req.body.stop3placeName,
-        stop3location: req.body.stop3location,
-        stop3description: req.body.stop3description,
-        stop4placeName: req.body.stop4placeName,
-        stop4location: req.body.stop4location,
-        stop4description: req.body.stop4description
+    Itinerary.create(new Itinerary(req.body), function(err, created){
+      if(err) return console.error(err);
+      res.send(req.body);
     })
-    newItin.save(function(err, exampleItin){
-      if(err) return console.error(err)
-    })
+    // let newItin = new Itinerary({
+    //     title: req.body.title,
+    //     author: req.body.author,
+    //     authorLocation: req.body.authorLocation,
+    //     authorZip: req.body.authorZip,
+    //     description: req.body.description,
+    //     stop1placeName: req.body.stop1placeName,
+    //     stop1location: req.body.stop1location,
+    //     stop1description: req.body.stop1description,
+    //     stop2placeName: req.body.stop2placeName,
+    //     stop2location: req.body.stop2location,
+    //     stop2description: req.body.stop2description,
+    //     stop3placeName: req.body.stop3placeName,
+    //     stop3location: req.body.stop3location,
+    //     stop3description: req.body.stop3description,
+    //     stop4placeName: req.body.stop4placeName,
+    //     stop4location: req.body.stop4location,
+    //     stop4description: req.body.stop4description
+    // })
+    // newItin.save(function(err, exampleItin){
+    //   if(err) return console.error(err)
+    // })
+    
 })
 
 
