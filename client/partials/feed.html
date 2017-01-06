@@ -1,12 +1,20 @@
 <h1>Local Feed</h1>
+
+<!-- div that contains entire feed of itineraries -->
 <ul class="feed">
   <li>
+    <!-- div designed for one itinerary... Using angular ng-repeat, it will use this whole div
+    as a template, and use each item in the array it's populating from with a new template
+    we are filtering which items will be populated, using filter: searchZip. It will only display the itins that have a matching zip.
+     -->
     <div class="feed-item" ng-repeat='itinerary in currentItins | filter: searchZip'>
+
+      <!-- {{}} double curly brackets used to access variables on an angular partial. set variable to the scope on the controller for this partial -->
       <h1>{{itinerary.title}}
       <h2>{{itinerary.authorLocation}}</h2>
       <h2>{{itinerary.author}}</h2>
 
-        <!-- HARDCODED DIVS... populate somehow -->
+      <!-- div template that will populate as a part of the ng-repeat. Template for the four stops -->
           <div class="stops">
             <p><b>{{itinerary.stop1placeName}}</b><br>
             {{itinerary.stop1description}}</p>
@@ -24,7 +32,7 @@
             {{itinerary.stop4description}}</p>
           </div>
 
-
+<!-- that's it! ask me if you have any questions.. -chrisf -->
 
     </div>
   </li>
