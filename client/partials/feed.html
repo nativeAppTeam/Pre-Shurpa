@@ -2,32 +2,30 @@
 
 <ul class="feed">
   <li>
-    <div class="feed-item" ng-repeat='numbers in currentItin'>
-      <h1>{{title}}</h1>
-      <h2>{{zip}}</h2>
-      <h3>{{author}}</h3>
+    <div class="feed-item" ng-repeat='itinerary in currentItins | filter: '>
+      <h1>{{itinerary.title}}
+      <h2>{{itinerary.authorLocation}}</h2>
+      <h2>{{itinerary.author}}</h2>
 
         <!-- HARDCODED DIVS... populate somehow -->
           <div class="stops">
-            <p>{{name}} <br>
-            {{location}} <br>
-            {{description}}</p>
+            <p>{{itinerary.stop1placeName}} <br>
+            {{itinerary.stop1description}}</p>
           </div>
           <div class="stops">
-            <p>{{name}} <br>
-            {{location}} <br>
-            {{description}}</p>
+            <p>{{itinerary.stop2placeName}} <br>
+            {{itinerary.stop2description}}</p>
           </div>
           <div class="stops">
-            <p>{{name}} <br>
-            {{location}} <br>
-            {{description}}</p>
+            <p>{{itinerary.stop2placeName}} <br>
+            {{itinerary.stop2description}}</p>
           </div>
           <div class="stops">
-            <p>{{name}} <br>
-            {{location}} <br>
-            {{description}}</p>
+            <p>{{itinerary.stop3placeName}} <br>
+            {{itinerary.stop3description}}</p>
           </div>
+
+
 
     </div>
   </li>
