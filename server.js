@@ -19,8 +19,10 @@ let db = mongoose.connection.once('open', () => {
 db.on('error', console.error.bind(console, 'connection error: '));
 
 let itinerarySchema = new mongoose.Schema({
+    title: String,
     author: String,
     authorLocation: String,
+    authorZip: String,
     stop1placeName: String,
     stop1location: String,
     stop1description: String,
@@ -29,7 +31,10 @@ let itinerarySchema = new mongoose.Schema({
     stop2description: String,
     stop3placeName: String,
     stop3location: String,
-    stop3description: String
+    stop3description: String,
+    stop4placeName: String,
+    stop4location: String,
+    stop4description: String
 })
 
 let Itinerary = mongoose.model('Itinerary', itinerarySchema);
@@ -51,8 +56,10 @@ app.post('/create', function(req, res) {
     res.send(req.body);
     console.log(req.body);
     let newItin = new Itinerary({
+        title: req.body.title,
         author: req.body.author,
         authorLocation: req.body.authorLocation,
+        authorZip: req.body.authorZip,
         description: req.body.description,
         stop1placeName: req.body.stop1placeName,
         stop1location: req.body.stop1location,

@@ -4,7 +4,7 @@
 
 <h2>Show me what the locals recommend</h2>
 
-<input places-auto-complete placeIDOnly="true" ng-model="location" id="homeSearch" on-place-changed="myUnusedCallback(location)"/>
+<input places-auto-complete types="['geocode']" ng-model="location" id="homeSearch" on-place-changed="myUnusedCallback(location)"/>
 </br>
 </br>
 <button ng-click="getLocation()"> Use Current Location </button>
@@ -14,6 +14,10 @@
   {{location}} 
 </p>
 <button ng-click="searchLocation(location)"> Search </button>
+<div id="recentlyCreated">
+  <h3>Last Three Created Itineraries</h3>
+  <span ng-repeat='obj in itinLibrary'><b>{{obj.title}}</b>: {{obj.author}} //</span>
+</div>
 
 <div map-lazy-load="https://maps.google.com/maps/api/js">
   <!--<ng-map center={{location}} zoom="12"></ng-map>
