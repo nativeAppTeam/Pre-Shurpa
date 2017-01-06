@@ -1,6 +1,6 @@
 
 <div id="homeContainer">
-<h1> let a local be your guide </h1>
+<h1 class="title1"> Let a local be your guide </h1>
 
 <h2>Show me what the locals recommend</h2>
 
@@ -11,9 +11,9 @@
 
 <p>
  Your Current Search Area is: </br>
-  {{location}} 
+  {{location}}
 </p>
-<button ng-click="searchLocation(location)"> Search </button>
+<button ng-click="searchLocation(location)" ng-route='/#/feed'> Search </button>
 <div id="recentlyCreated">
   <h3>Last Three Created Itineraries</h3>
   <span ng-repeat='obj in itinLibrary'><b>{{obj.title}}</b>: {{obj.author}} //</span>
@@ -30,8 +30,3 @@
 
 
 </div>
-
-
-
-
-

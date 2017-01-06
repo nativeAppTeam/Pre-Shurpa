@@ -5,7 +5,8 @@ angular
 function feedController($scope, ItinFactory, $animate) {
 
 $scope.currentItins = ItinFactory.currentItins;
-console.log('$scope.current', $scope.currentItins);
+$scope.searchZip = ItinFactory.searchZip;
+console.log($scope.searchZip);
 // $scope.nums = [1,2,3];
 // $scope.title = 'Marina Del Rey';
 // $scope.zip = 90508;

@@ -1,27 +1,26 @@
 <h1>Local Feed</h1>
-
 <ul class="feed">
   <li>
-    <div class="feed-item" ng-repeat='itinerary in currentItins | filter: '>
+    <div class="feed-item" ng-repeat='itinerary in currentItins | filter: searchZip'>
       <h1>{{itinerary.title}}
       <h2>{{itinerary.authorLocation}}</h2>
       <h2>{{itinerary.author}}</h2>
 
         <!-- HARDCODED DIVS... populate somehow -->
           <div class="stops">
-            <p>{{itinerary.stop1placeName}} <br>
+            <p><b>{{itinerary.stop1placeName}}</b><br>
             {{itinerary.stop1description}}</p>
           </div>
           <div class="stops">
-            <p>{{itinerary.stop2placeName}} <br>
+            <p><b>{{itinerary.stop2placeName}}</b> <br>
             {{itinerary.stop2description}}</p>
           </div>
           <div class="stops">
-            <p>{{itinerary.stop2placeName}} <br>
+            <p><b>{{itinerary.stop2placeName}}</b> <br>
             {{itinerary.stop2description}}</p>
           </div>
           <div class="stops">
-            <p>{{itinerary.stop3placeName}} <br>
+            <p><b>{{itinerary.stop3placeName}}</b> <br>
             {{itinerary.stop3description}}</p>
           </div>
 
