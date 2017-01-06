@@ -1,25 +1,89 @@
-<h3>PAGE 2</h3>
-<h1>Create Itinerary</h1>
+<div id="createItinContainer">
+  <h1>Create Itinerary</h1>
 
-<form ng-submit="setAuthorAndLocation()">
-  <input type="text" ng-model="itinAuthor" placeholder="Your Name Here">
-  <h2>Where are we starting?</h2>
-  <input type="text" ng-model="authorLocation" placeholder="Ex: 1234 Main St.">
-  <button type="submit">Submit</button>
-</form>
-</br>
+  <form  ng-controller="createController">
+
+    <!--Area to set Author, Route, and Location-->
+    <input ng-change="updateScope('author', author)" type="text" ng-model="author" placeholder="Your Name Here">
+    </br>
+    <input ng-change="updateScope('title', title)" type="text" ng-model="title" placeholder="Name this Route">
+    <h2>Where are we starting?</h2>
+    <input ng-change="updateScope('authorLocation', authorLocation)" places-auto-complete types="['geocode']" ng-model="authorLocation"
+      on-place-changed="myUnusedCallback(location)">
+    <button ng-click="searchLocation(authorLocation)"> Save Location </button>
+    </br>
+    </br>
+    <button ng-click="getLocation()" ng-model="authorLocation"> Use Current Location </button>
+    <!--<input type="text" ng-model="authorLocation" placeholder="Ex: 1234 Main St.">
+  <button type="submit">Submit</button>-->
+
+    <p>
+      Your Current Itinerary Area is around: </br>
+      {{authorLocation}}
+    </p>
+
+    </br>
+    <!--Map-->
+    <div map-lazy-load="https://maps.google.com/maps/api/js">
+      <!--<ng-map center={{location}} zoom="12"></ng-map> <marker position={{location}}></marker>-->
+      <map center={{authorLocation}} zoom="10">
+      <marker position={{authorLocation}}></marker>
+    </map>
+    </div>
+
+    <!--Route Creator-->
+    <div class="itinCreator">
+      <fieldset data-ng-repeat="spot in spots" class="addSpot">
+        <h3>Stop 1:</h3>
+        <input places-auto-complete type="text"  ng-model="stop1placeName" type="text" placeholder="Place Name"
+          ng-change="updateScope('stop1placeName', stop1placeName)">
+
+        <textarea ng-change="updateScope('stop1description', stop1description )" rows="3" cols="2" type="text" class="description"
+          ng-model="stop1description" type="text" placeholder="Description"></textarea> 
+        <!--<button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>-->
+      </fieldset>
+      <!--<button class="addSpot" ng-click="addNewSpot()">add a spot</button>-->
+      </br>
+      <fieldset data-ng-repeat="spot in spots" class="addSpot">
+        <h3>Stop 2:</h3>
+        <input places-auto-complete type="text"  ng-model="stop2placeName" type="text" placeholder="Place Name"
+          ng-change="updateScope('stop2placeName', stop2placeName)">
+
+        <textarea ng-change="updateScope('stop2description', stop2description)" rows="3" cols="2" type="text" class="description"
+          ng-model="stop2description" type="text" placeholder="Description"></textarea>
+        <!--<button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>-->
+
+        
+      </fieldset>
+      </br>
+      <fieldset data-ng-repeat="spot in spots" class="addSpot">
+        <h3>Stop 3:</h3>
+        <input places-auto-complete type="text"  ng-model="stop3placeName" type="text" placeholder="Place Name"
+          ng-change="updateScope('stop3placeName', stop3placeName )">
+
+        <textarea ng-change="updateScope('stop3description', stop3description)" rows="3" cols="2" type="text" class="description"
+          ng-model="stop3description" type="text" placeholder="Description"></textarea>
+        <!--<button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>-->
+        
+      </fieldset>
+      </br>
+      <fieldset data-ng-repeat="spot in spots" class="addSpot">
+        <h3>Stop 4:</h3>
+        <input places-auto-complete type="text"  ng-model="stop4placeName" type="text" placeholder="Place Name"
+          ng-change="updateScope('stop4placeName', stop4placeName )">
+
+        <textarea ng-change="updateScope('stop4description', stop4description)" rows="3" cols="2" type="text" class="description"
+          ng-model="stop4description" type="text" placeholder="Description"></textarea>
+        <!--<button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>-->
+        
+      </fieldset>
+    </div>
+    <div>
+      <button ng-click="save()" type="submit">save your Itinerary</button>
+    </div>
+  </form>
 
 
 
-<div class="itinCreator">
-  <fieldset data-ng-repeat="spot in spots">
-    <input type="text" id="{{spot}}" ng-model="placeName" type="text" placeholder="Place Name">
-    <input type="text" id="{{spot}}" ng-model="location" type="text" placeholder="Location">
-    <textarea rows ="3" cols="2" type="text" class="description" id="{{spot}}" ng-model="description" type="text" placeholder="Description"></textarea>
-    <button class="remove" ng-show="$last" ng-click="removeChoice()">Remove Spot</button>
-  </fieldset>
-  <button class="addSpot"  ng-click="addNewSpot()">add a spot</button>
-</div>
-<div>
-  <button ng-submit="save()">save your Itinerary</button>
+
 </div>
