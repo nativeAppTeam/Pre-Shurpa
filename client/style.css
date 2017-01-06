@@ -22,7 +22,7 @@ a {
 }
 
 
-/*STYLES FOR HOME */
+/*STYLES FOR HOME AND CREATE */
   #homeContainer, #createItinContainer {
     text-align: center;
     margin: auto;
@@ -48,7 +48,6 @@ a {
 }
 
 .stops {
-
   margin-left: 2px;
   margin-bottom: 4px;
   height: 125px;
@@ -58,18 +57,13 @@ a {
   overflow: scroll;
 }
 
+/*STYLES FOR ITINERARY STOP CREATOR*/
 .itinCreator{
   display:flex;
   align-items: flex-start;
   justify-content: center;
   flex-flow: row wrap;
-
 }
-
-.addStop{
-  width:
-}
-
 
 .description{
   height:100px;
