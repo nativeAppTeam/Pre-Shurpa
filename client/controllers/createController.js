@@ -20,7 +20,7 @@ function createController($scope, $location, ItinFactory, $http) {
    // console.log($scope[inputName])
   }
   $scope.save = function () {
-    console.log($scope.title, $scope.author, $scope.authorLocation, $scope.authorZip, $scope.stop1placeName, $scope.stop1description);
+    //console.log($scope.title, $scope.author, $scope.authorLocation, $scope.authorZip, $scope.stop1placeName, $scope.stop1description);
     ItinFactory.post(
       $scope.title,
       $scope.author,
@@ -38,7 +38,9 @@ function createController($scope, $location, ItinFactory, $http) {
       $scope.stop4placeName,
       $scope.stop4location,
       $scope.stop4description
-    )
+    ).success(function(){
+      alert('Itinerary Created!!!')
+    })
   }
   $scope.searchLocation = function (x) {
     $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + x + '&key=AIzaSyDRjb5435OyNsX2BO4QM7vR-84vvUuzTBM')
