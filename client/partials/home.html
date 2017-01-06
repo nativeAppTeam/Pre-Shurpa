@@ -1,31 +1,32 @@
 
 <div id="homeContainer">
-<h1 class="title1"> Let a local be your guide </h1>
 
+<h1 class="title1"> Let a local be your guide </h1>
 <h2>Show me what the locals recommend</h2>
 
+<!--The below utilizes the ngmap places-auto-complete directive
+  https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/docs/index.html-->
 <input places-auto-complete types="['geocode']" ng-model="location" id="homeSearch" on-place-changed="myUnusedCallback(location)"/>
-</br>
-</br>
+
 <button ng-click="getLocation()"> Use Current Location </button>
 
 <p>
- Your Current Search Area is: </br>
-  {{location}}
+ Your Current Search Area is: </br> {{location}}
 </p>
+
 <button ng-click="searchLocation(location)" ng-route='/#/feed'> Search </button>
+
 <div id="recentlyCreated">
   <h3>Last Three Created Itineraries</h3>
-  <span ng-repeat='obj in itinLibrary'><b>{{obj.title}}</b>: {{obj.author}} //</span>
+  <span ng-repeat='obj in lastThree'><b>{{obj.title}}</b>: {{obj.author}} //</span>
 </div>
 
+<!--The below utilizes the ngmap map-lazy-load directive
+  https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/docs/index.html-->
 <div map-lazy-load="https://maps.google.com/maps/api/js">
-  <!--<ng-map center={{location}} zoom="12"></ng-map>
-        <marker position={{location}}></marker>-->
-        <map center={{location}} zoom="10">
-      <marker position={{location}}></marker>
-    </map>
-
+  <map center={{location}} zoom="10">
+    <marker position={{location}}></marker>
+  </map>
 </div>
 
 
